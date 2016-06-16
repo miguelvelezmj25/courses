@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.11)
+# Host: 127.0.0.1 (MySQL 5.7.12)
 # Database: courses
-# Generation Time: 2016-04-25 23:00:55 +0000
+# Generation Time: 2016-06-16 02:43:49 +0000
 # ************************************************************
 
 
@@ -29,24 +29,24 @@ CREATE TABLE `classes` (
   `id` varchar(100) NOT NULL DEFAULT '',
   `name` varchar(100) NOT NULL DEFAULT '',
   `description` varchar(1000) NOT NULL DEFAULT '',
-  `enrollment` varchar(36) NOT NULL,
+  `enrollment_id` varchar(36) NOT NULL DEFAULT '',
   `term` varchar(100) NOT NULL,
   `year` int(11) NOT NULL,
-  `professor` varchar(36) NOT NULL DEFAULT '',
+  `professor_id` varchar(36) NOT NULL DEFAULT '',
   `grade` varchar(11) NOT NULL DEFAULT '',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `FK_classes_professors` (`professor`),
-  KEY `FK_classes_enrollment` (`enrollment`),
-  CONSTRAINT `FK_classes_enrollment` FOREIGN KEY (`enrollment`) REFERENCES `enrollment` (`id`),
-  CONSTRAINT `FK_classes_professors` FOREIGN KEY (`professor`) REFERENCES `professors` (`id`)
+  KEY `FK_classes_professors` (`professor_id`),
+  KEY `FK_classes_enrollment` (`enrollment_id`),
+  CONSTRAINT `FK_classes_enrollment` FOREIGN KEY (`enrollment_id`) REFERENCES `enrollment` (`id`),
+  CONSTRAINT `FK_classes_professors` FOREIGN KEY (`professor_id`) REFERENCES `professors` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `classes` WRITE;
 /*!40000 ALTER TABLE `classes` DISABLE KEYS */;
 
-INSERT INTO `classes` (`id`, `name`, `description`, `enrollment`, `term`, `year`, `professor`, `grade`, `created_at`, `updated_at`)
+INSERT INTO `classes` (`id`, `name`, `description`, `enrollment_id`, `term`, `year`, `professor_id`, `grade`, `created_at`, `updated_at`)
 VALUES
 	('CISC 131','Intro-Programming&Prob Solving','This course is designed for students with majors in the Department of Computer and Information Sciences and focuses on logical thinking, the design and implementation of algorithms in a procedural language, testing, correctness, and the use of common programming structures such as arrays. In addition, basic machine concepts are covered including hardware organization and representation of information in the machine. The typical student will be adept at using the computer but will have no prior programming experience. Engineering and science majors should take CISC 130. Please see your academic advisor to ensure you select the appropriate class. Lab included. NOTE: Students who receive credit for CISC 131 may not receive credit for CISC 130','15867696-0b05-11e6-bbb5-e920e415be78','Fall',2011,'0d492c82-0b0d-11e6-bbb5-e920e415be78','A','2016-04-25 13:23:39','2016-04-25 13:55:42'),
 	('CISC 210','Information Security','An introductory course in computer security. Topics include operating system security, cryptography, user authentication, application security, secure programming, web security and privacy issues, and ethical issues in the field of computer security. Emphasis is on understanding the technical aspects of how adversaries exploit systems and the techniques for defending against these attacks. Prerequisites: 1) MATH 128 or ENGR 230 or STAT 220(IDTH 220) (may be taken concurrently), and 2) a minimum grade of C- in CISC 130 or 131','15867696-0b05-11e6-bbb5-e920e415be78','Spring',2013,'abe820c8-0b0d-11e6-bbb5-e920e415be78','A','2016-04-25 13:44:24','2016-04-25 14:10:10'),
@@ -89,21 +89,21 @@ CREATE TABLE `enrollment` (
   `id` varchar(36) NOT NULL DEFAULT '',
   `degree` varchar(100) NOT NULL DEFAULT '',
   `alias` varchar(10) NOT NULL DEFAULT '',
-  `university` varchar(36) NOT NULL DEFAULT '',
+  `university_id` varchar(36) NOT NULL DEFAULT '',
   `level` varchar(100) NOT NULL DEFAULT '',
   `start` date NOT NULL,
   `end` date DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `fk_enrollment_universities` (`university`),
-  CONSTRAINT `fk_enrollment_universities` FOREIGN KEY (`university`) REFERENCES `universities` (`id`)
+  KEY `fk_enrollment_universities` (`university_id`),
+  CONSTRAINT `fk_enrollment_universities` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `enrollment` WRITE;
 /*!40000 ALTER TABLE `enrollment` DISABLE KEYS */;
 
-INSERT INTO `enrollment` (`id`, `degree`, `alias`, `university`, `level`, `start`, `end`, `created_at`, `updated_at`)
+INSERT INTO `enrollment` (`id`, `degree`, `alias`, `university_id`, `level`, `start`, `end`, `created_at`, `updated_at`)
 VALUES
 	('15867696-0b05-11e6-bbb5-e920e415be78','Bachelor of Arts','B.A.','d45e7e2c-0af3-11e6-bbb5-e920e415be78','undergraduate','2010-09-01','2015-12-18','2016-04-25 11:45:14','2016-04-25 11:52:23'),
 	('87cb9056-0b05-11e6-bbb5-e920e415be78','Certificate of Attendance',' ','ce6af6ee-0af3-11e6-bbb5-e920e415be78','undergraduate','2015-06-01','2015-08-01','2016-04-25 11:48:26','2016-04-25 14:07:13');
@@ -131,21 +131,21 @@ CREATE TABLE `professors` (
   `id` varchar(36) NOT NULL DEFAULT '',
   `name` varchar(100) NOT NULL DEFAULT '',
   `department` varchar(100) NOT NULL,
-  `university` varchar(36) NOT NULL DEFAULT '',
+  `university_id` varchar(36) NOT NULL DEFAULT '',
   `phone` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `office` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `FK_professors_universities` (`university`),
-  CONSTRAINT `FK_professors_universities` FOREIGN KEY (`university`) REFERENCES `universities` (`id`)
+  KEY `FK_professors_universities` (`university_id`),
+  CONSTRAINT `FK_professors_universities` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `professors` WRITE;
 /*!40000 ALTER TABLE `professors` DISABLE KEYS */;
 
-INSERT INTO `professors` (`id`, `name`, `department`, `university`, `phone`, `email`, `office`, `created_at`, `updated_at`)
+INSERT INTO `professors` (`id`, `name`, `department`, `university_id`, `phone`, `email`, `office`, `created_at`, `updated_at`)
 VALUES
 	('0d492c82-0b0d-11e6-bbb5-e920e415be78','Patrick Jarvis','CISC','d45e7e2c-0af3-11e6-bbb5-e920e415be78','651-962-5482','pljarvis@stthomas.edu','OSS 426','2016-04-25 12:42:16','2016-04-25 12:42:16'),
 	('2ac4da72-0b0d-11e6-bbb5-e920e415be78','Kate Lockwood','CISC','d45e7e2c-0af3-11e6-bbb5-e920e415be78','651-962-5374','aklockwood@stthomas.edu','OSS 414','2016-04-25 12:43:06','2016-04-25 12:43:06'),

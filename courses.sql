@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.12)
 # Database: courses
-# Generation Time: 2016-06-16 02:43:49 +0000
+# Generation Time: 2016-06-17 00:41:20 +0000
 # ************************************************************
 
 
@@ -37,10 +37,10 @@ CREATE TABLE `classes` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `FK_classes_professors` (`professor_id`),
-  KEY `FK_classes_enrollment` (`enrollment_id`),
-  CONSTRAINT `FK_classes_enrollment` FOREIGN KEY (`enrollment_id`) REFERENCES `enrollment` (`id`),
-  CONSTRAINT `FK_classes_professors` FOREIGN KEY (`professor_id`) REFERENCES `professors` (`id`)
+  KEY `classes_professors_id_fk` (`professor_id`),
+  KEY `classes_enrollment_id_fk` (`enrollment_id`),
+  CONSTRAINT `classes_enrollment_id_fk` FOREIGN KEY (`enrollment_id`) REFERENCES `enrollment` (`id`),
+  CONSTRAINT `classes_professors_id_fk` FOREIGN KEY (`professor_id`) REFERENCES `professors` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `classes` WRITE;
@@ -96,8 +96,8 @@ CREATE TABLE `enrollment` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `fk_enrollment_universities` (`university_id`),
-  CONSTRAINT `fk_enrollment_universities` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`)
+  KEY `enrollment_universities_id_fk` (`university_id`),
+  CONSTRAINT `enrollment_universities_id_fk` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `enrollment` WRITE;
@@ -138,8 +138,8 @@ CREATE TABLE `professors` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `FK_professors_universities` (`university_id`),
-  CONSTRAINT `FK_professors_universities` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`)
+  KEY `professors_universities_id_fk` (`university_id`),
+  CONSTRAINT `professors_universities_id_fk` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `professors` WRITE;

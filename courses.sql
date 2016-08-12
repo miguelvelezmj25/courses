@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.12)
+# Host: 127.0.0.1 (MySQL 5.7.13)
 # Database: courses
-# Generation Time: 2016-06-17 00:41:20 +0000
+# Generation Time: 2016-08-12 17:51:32 +0000
 # ************************************************************
 
 
@@ -203,7 +203,8 @@ LOCK TABLES `universities` WRITE;
 
 INSERT INTO `universities` (`id`, `name`, `alias`, `address`, `city`, `state`, `zipcode`, `country`, `created_at`, `updated_at`)
 VALUES
-	('ce6af6ee-0af3-11e6-bbb5-e920e415be78','Massachusetts Institute of Technology','MIT','77 Massachusetts Ave','Cambridge','MA','02139','USA','2016-04-25 09:40:33','2016-04-25 09:40:33'),
+	('499d7fb4-60b5-11e6-b92d-83017b6792a5','Carnegie Mellon University','CMU','5000 Forbes Ave, Pittsburgh, PA 15213\n5000 Forbes Ave, Pittsburgh, PA 15213\n5000 Forbes Ave','Pittsburgh','PA','15213','USA','2016-08-12 13:50:42','2016-08-12 13:50:42'),
+	('ce6af6ee-0af3-11e6-bbb5-e920e415be78','Massachusetts Institute of Technology','MIT','77 Massachusetts Ave','Cambridge','MA','02139','USA','2016-04-25 09:40:33','2016-07-14 20:58:31'),
 	('d45e7e2c-0af3-11e6-bbb5-e920e415be78','University of St Thomas','UST','2115 Summit Avenue','St Paul','MN','55105','USA','2016-04-25 10:18:10','2016-04-25 11:50:16');
 
 /*!40000 ALTER TABLE `universities` ENABLE KEYS */;

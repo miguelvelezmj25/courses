@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.14)
+# Host: 127.0.0.1 (MySQL 5.7.15)
 # Database: courses
-# Generation Time: 2016-09-02 16:49:35 +0000
+# Generation Time: 2016-10-13 23:07:22 +0000
 # ************************************************************
 
 
@@ -166,7 +166,7 @@ VALUES
 	('973844cc-712a-11e6-9a00-94e7c62e904a','Travis Breaux','ISR','499d7fb4-60b5-11e6-b92d-83017b6792a5','412-268-7334','breaux@cs.cmu.edu','WEH 5103','2016-09-02 12:30:42','2016-09-02 12:44:29'),
 	('9f168f28-712a-11e6-9a00-94e7c62e904a','Jim Herbsleb','ISR','499d7fb4-60b5-11e6-b92d-83017b6792a5','412-268-8933','jdh@cs.cmu.edu','WEH 5307','2016-09-02 12:30:55','2016-09-02 12:44:56'),
 	('a3fa3148-0b0e-11e6-bbb5-e920e415be78','Marie Lopez del Puerto','PHYS','d45e7e2c-0af3-11e6-bbb5-e920e415be78','651-962-5213','mlpuerto@stthomas.edu','OWS 160B','2016-04-25 12:53:38','2016-04-25 12:53:38'),
-	('a671f7b2-712a-11e6-9a00-94e7c62e904a','Bodgan Vasilescu','ISR','499d7fb4-60b5-11e6-b92d-83017b6792a5','','','','2016-09-02 12:31:07','2016-09-02 12:44:58'),
+	('a671f7b2-712a-11e6-9a00-94e7c62e904a','Bodgan Vasilescu','ISR','499d7fb4-60b5-11e6-b92d-83017b6792a5','','vasilescu@cs.cmu.edu','WEH 5115','2016-09-02 12:31:07','2016-10-13 19:06:21'),
 	('abe820c8-0b0d-11e6-bbb5-e920e415be78','Scott Yilek','CISC','d45e7e2c-0af3-11e6-bbb5-e920e415be78','651-962-5395','syilek@stthomas.edu','OSS 413','2016-04-25 12:46:42','2016-04-25 12:46:42'),
 	('b0ae8ce0-712a-11e6-9a00-94e7c62e904a','Christian Kastner','ISR','499d7fb4-60b5-11e6-b92d-83017b6792a5','412-268-5254','kaestner@cs.cmu.edu','WEH 5122','2016-09-02 12:31:24','2016-09-02 12:46:50'),
 	('b8bd7144-712a-11e6-9a00-94e7c62e904a','Bill Scherlis','ISR','499d7fb4-60b5-11e6-b92d-83017b6792a5','412-268-8741','wls@cs.cmu.edu','WEH 5222','2016-09-02 12:31:38','2016-09-02 12:47:20'),

@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.15)
 # Database: courses
-# Generation Time: 2016-11-22 14:07:49 +0000
+# Generation Time: 2017-01-21 20:08:34 +0000
 # ************************************************************
 
 
@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS `classes`;
 CREATE TABLE `classes` (
   `id` varchar(100) NOT NULL DEFAULT '',
   `name` varchar(100) NOT NULL DEFAULT '',
-  `description` varchar(1000) NOT NULL DEFAULT '',
+  `description` varchar(10000) NOT NULL DEFAULT '',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -39,7 +39,8 @@ LOCK TABLES `classes` WRITE;
 
 INSERT INTO `classes` (`id`, `name`, `description`, `created_at`, `updated_at`)
 VALUES
-	('17-797','Software Engineering Seminar','The Software Research Seminar (SSSG) at CMU relies on active participation and a supportive community to help students broaden their understanding of software research and hone their presentation skills. This document briefly outlines our expectations for Software Engineering Ph.D. students with respect to SSSG. General Expectations: A. Attend both SSSG presentations each week. B. Participate by asking questions, contributing to the discussion, and giving constructive verbal and written feedback to presenters. Using an electronic device for purposes other than note-taking or feedback on the presentation is considered to be non-participation. C. Give 3 well-prepared SSSG talks per year (2 if giving an approved talk in an outside venue) The faculty recognizes that students may occasionally have conflicts with particular SSSG dates; in these cases the Reasonable Person Principle applies. There may occasionally be a systematic conflict, such as an overlapping course, in which case advance ','2016-09-02 12:36:46','2016-09-02 12:36:46'),
+	('05-834','Applied Machine Learning','Machine Learning is concerned with computer programs that enable the behavior of a computer to be learned from examples or experience rather than dictated through rules written by hand. It has practical value in many application areas of computer science such as on-line communities and digital libraries. This class is meant to teach the practical side of machine learning for applications, such as mining newsgroup data or building adaptive user interfaces. The emphasis will be on learning the process of applying machine learning effectively to a variety of problems rather than emphasizing an understanding of the theory behind what makes machine learning work. This course does not assume any prior exposure to machine learning theory or practice. In the first 2/3 of the course, we will cover a wide range of learning algorithms that can be applied to a variety of problems. In particular, we will cover topics such as decision trees, rule based classification, support vector machines, Bayesian networks, and clustering. In the final third of the class, we will go into more depth on one application area, namely the application of machine learning to problems involving text processing, such as information retrieval or text categorization. 05-834 is the HCII graduate section. If you are an LTI student, please sign up for the LTI graduate course number (11-663) ONLY to count properly towards your degree requirements. 05-434 is the HCII undergraduate section. If you are an LTI student, please sign up for the LTI undergraduate course number (11-344) ONLY to count properly towards your degree requirements.','2017-01-21 15:03:20','2017-01-21 15:03:22'),
+	('17-791','Software Engineering Seminar','The Software Research Seminar (SSSG) at CMU relies on active participation and a supportive community to help students broaden their understanding of software research and hone their presentation skills. This document briefly outlines our expectations for Software Engineering Ph.D. students with respect to SSSG. General Expectations: A. Attend both SSSG presentations each week. B. Participate by asking questions, contributing to the discussion, and giving constructive verbal and written feedback to presenters. Using an electronic device for purposes other than note-taking or feedback on the presentation is considered to be non-participation. C. Give 3 well-prepared SSSG talks per year (2 if giving an approved talk in an outside venue) The faculty recognizes that students may occasionally have conflicts with particular SSSG dates; in these cases the Reasonable Person Principle applies. There may occasionally be a systematic conflict, such as an overlapping course, in which case advance ','2016-09-02 12:36:46','2017-01-21 15:01:40'),
 	('17-808','Software Engineering Research','This course prepares PhD students to begin research in software engineering. It introduces important ideas across the breadth of software engineering and the major research strategies of the field. Students will become familiar with the structure of the field; they will learn the seminal ideas and developments that led to current research questions; they will learn to critique research papers to evaluate their claims and evidence; and they will also become familiar with the current research themes at CMU.','2016-09-02 12:34:02','2016-09-02 12:35:35'),
 	('CISC 131','Intro-Programming&Prob Solving','This course is designed for students with majors in the Department of Computer and Information Sciences and focuses on logical thinking, the design and implementation of algorithms in a procedural language, testing, correctness, and the use of common programming structures such as arrays. In addition, basic machine concepts are covered including hardware organization and representation of information in the machine. The typical student will be adept at using the computer but will have no prior programming experience. Engineering and science majors should take CISC 130. Please see your academic advisor to ensure you select the appropriate class. Lab included. NOTE: Students who receive credit for CISC 131 may not receive credit for CISC 130','2016-04-25 13:23:39','2016-04-25 13:55:42'),
 	('CISC 210','Information Security','An introductory course in computer security. Topics include operating system security, cryptography, user authentication, application security, secure programming, web security and privacy issues, and ethical issues in the field of computer security. Emphasis is on understanding the technical aspects of how adversaries exploit systems and the techniques for defending against these attacks. Prerequisites: 1) MATH 128 or ENGR 230 or STAT 220(IDTH 220) (may be taken concurrently), and 2) a minimum grade of C- in CISC 130 or 131','2016-04-25 13:44:24','2016-04-25 14:10:10'),
@@ -100,18 +101,20 @@ LOCK TABLES `classes_taken` WRITE;
 
 INSERT INTO `classes_taken` (`class_id`, `enrollment_id`, `term`, `year`, `professor_id`, `grade`, `created_at`, `updated_at`)
 VALUES
-	('17-797','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'63812ef0-712a-11e6-9a00-94e7c62e904a','','2016-11-22 08:57:43','2016-11-22 08:57:43'),
-	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'63812ef0-712a-11e6-9a00-94e7c62e904a','','2016-11-22 09:01:24','2016-11-22 09:01:24'),
-	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'7136706e-712a-11e6-9a00-94e7c62e904a','','2016-11-22 09:01:24','2016-11-22 09:01:24'),
-	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'7732864c-712a-11e6-9a00-94e7c62e904a','','2016-11-22 09:01:24','2016-11-22 09:01:24'),
-	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'8e9486b4-712a-11e6-9a00-94e7c62e904a','','2016-11-22 09:01:24','2016-11-22 09:01:24'),
-	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'973844cc-712a-11e6-9a00-94e7c62e904a','','2016-11-22 09:01:24','2016-11-22 09:01:24'),
-	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'9f168f28-712a-11e6-9a00-94e7c62e904a','','2016-11-22 09:01:24','2016-11-22 09:01:24'),
-	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'a671f7b2-712a-11e6-9a00-94e7c62e904a','','2016-11-22 09:01:24','2016-11-22 09:01:24'),
-	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'b0ae8ce0-712a-11e6-9a00-94e7c62e904a','','2016-11-22 09:01:24','2016-11-22 09:01:24'),
-	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'b8bd7144-712a-11e6-9a00-94e7c62e904a','','2016-11-22 09:01:24','2016-11-22 09:01:24'),
-	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'d1ab3754-712a-11e6-9a00-94e7c62e904a','','2016-11-22 09:01:24','2016-11-22 09:01:24'),
-	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'dad3f294-712a-11e6-9a00-94e7c62e904a','','2016-11-22 08:57:43','2016-11-22 08:57:43'),
+	('05-834','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Spring',2017,'0aa055fe-e015-11e6-8cba-acb791b2c6cb','','2017-01-21 15:06:49','2017-01-21 15:06:50'),
+	('17-791','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'63812ef0-712a-11e6-9a00-94e7c62e904a','S','2016-11-22 08:57:43','2017-01-21 15:01:49'),
+	('17-791','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Spring',2017,'63812ef0-712a-11e6-9a00-94e7c62e904a','','2017-01-21 15:04:13','2017-01-21 15:04:14'),
+	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'63812ef0-712a-11e6-9a00-94e7c62e904a','S','2016-11-22 09:01:24','2017-01-21 14:59:09'),
+	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'7136706e-712a-11e6-9a00-94e7c62e904a','S','2016-11-22 09:01:24','2017-01-21 14:59:09'),
+	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'7732864c-712a-11e6-9a00-94e7c62e904a','S','2016-11-22 09:01:24','2017-01-21 14:59:09'),
+	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'8e9486b4-712a-11e6-9a00-94e7c62e904a','S','2016-11-22 09:01:24','2017-01-21 14:59:09'),
+	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'973844cc-712a-11e6-9a00-94e7c62e904a','S','2016-11-22 09:01:24','2017-01-21 14:59:09'),
+	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'9f168f28-712a-11e6-9a00-94e7c62e904a','S','2016-11-22 09:01:24','2017-01-21 14:59:09'),
+	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'a671f7b2-712a-11e6-9a00-94e7c62e904a','S','2016-11-22 09:01:24','2017-01-21 14:59:09'),
+	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'b0ae8ce0-712a-11e6-9a00-94e7c62e904a','S','2016-11-22 09:01:24','2017-01-21 14:59:09'),
+	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'b8bd7144-712a-11e6-9a00-94e7c62e904a','S','2016-11-22 09:01:24','2017-01-21 14:59:09'),
+	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'d1ab3754-712a-11e6-9a00-94e7c62e904a','S','2016-11-22 09:01:24','2017-01-21 14:59:09'),
+	('17-808','0b2b51f4-712a-11e6-9a00-94e7c62e904a','Fall',2016,'dad3f294-712a-11e6-9a00-94e7c62e904a','S','2016-11-22 08:57:43','2017-01-21 14:59:09'),
 	('CISC 131','15867696-0b05-11e6-bbb5-e920e415be78','Fall',2011,'0d492c82-0b0d-11e6-bbb5-e920e415be78','A','2016-11-22 08:57:43','2016-11-22 08:57:43'),
 	('CISC 210','15867696-0b05-11e6-bbb5-e920e415be78','Spring',2013,'abe820c8-0b0d-11e6-bbb5-e920e415be78','A','2016-11-22 08:57:43','2016-11-22 08:57:43'),
 	('CISC 230','15867696-0b05-11e6-bbb5-e920e415be78','Spring',2012,'0d492c82-0b0d-11e6-bbb5-e920e415be78','A','2016-11-22 08:57:43','2016-11-22 08:57:43'),
@@ -213,6 +216,7 @@ LOCK TABLES `professors` WRITE;
 
 INSERT INTO `professors` (`id`, `name`, `department`, `university_id`, `phone`, `email`, `office`, `created_at`, `updated_at`)
 VALUES
+	('0aa055fe-e015-11e6-8cba-acb791b2c6cb','Carolyn Rosé','LTI','499d7fb4-60b5-11e6-b92d-83017b6792a5','412-268-7130','cprose@cs.cmu.edu','GHC 5415','2017-01-21 15:06:04','2017-01-21 15:06:05'),
 	('0d492c82-0b0d-11e6-bbb5-e920e415be78','Patrick Jarvis','CISC','d45e7e2c-0af3-11e6-bbb5-e920e415be78','651-962-5482','pljarvis@stthomas.edu','OSS 426','2016-04-25 12:42:16','2016-04-25 12:42:16'),
 	('2ac4da72-0b0d-11e6-bbb5-e920e415be78','Kate Lockwood','CISC','d45e7e2c-0af3-11e6-bbb5-e920e415be78','651-962-5374','aklockwood@stthomas.edu','OSS 414','2016-04-25 12:43:06','2016-04-25 12:43:06'),
 	('2d8e6cf2-0b15-11e6-bbb5-e920e415be78','Thanaa Ghanem','CISC','d45e7e2c-0af3-11e6-bbb5-e920e415be78','','','','2016-04-25 13:40:26','2016-04-25 13:40:26'),

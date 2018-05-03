@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.15)
+# Host: 127.0.0.1 (MySQL 5.7.21)
 # Database: courses
-# Generation Time: 2018-01-16 18:37:13 +0000
+# Generation Time: 2018-05-03 14:41:17 +0000
 # ************************************************************
 
 
@@ -26,13 +26,13 @@
 DROP TABLE IF EXISTS `classes`;
 
 CREATE TABLE `classes` (
-  `id` varchar(100) NOT NULL DEFAULT '',
-  `name` varchar(100) NOT NULL DEFAULT '',
-  `description` varchar(10000) NOT NULL DEFAULT '',
+  `id` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `description` varchar(10000) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 LOCK TABLES `classes` WRITE;
 /*!40000 ALTER TABLE `classes` DISABLE KEYS */;
@@ -76,17 +76,19 @@ VALUES
 UNLOCK TABLES;
 
 
-# Dump of table classes_info
+# Dump of table classes_staff
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `classes_info`;
+DROP TABLE IF EXISTS `classes_staff`;
 
-CREATE TABLE `classes_info` (
-  `class_id` varchar(100) DEFAULT NULL,
-  `term` char(1) DEFAULT NULL,
-  `year` int(11) DEFAULT NULL,
-  `grade` char(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `classes_staff` (
+  `class_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `professor_id` varchar(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`class_id`,`professor_id`),
+  KEY `classes_staff_professors_id_fk` (`professor_id`),
+  CONSTRAINT `classes_staff_classes_id_fk` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`),
+  CONSTRAINT `classes_staff_professors_id_fk` FOREIGN KEY (`professor_id`) REFERENCES `professors` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 
@@ -96,12 +98,12 @@ CREATE TABLE `classes_info` (
 DROP TABLE IF EXISTS `classes_taken`;
 
 CREATE TABLE `classes_taken` (
-  `class_id` varchar(100) NOT NULL DEFAULT '',
-  `enrollment_id` varchar(36) NOT NULL DEFAULT '',
-  `term` varchar(100) NOT NULL DEFAULT '',
+  `class_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `enrollment_id` varchar(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `term` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `year` int(11) NOT NULL,
-  `professor_id` varchar(36) NOT NULL DEFAULT '',
-  `grade` varchar(11) NOT NULL DEFAULT '',
+  `professor_id` varchar(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `grade` varchar(11) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`class_id`,`enrollment_id`,`term`,`year`,`professor_id`),
@@ -110,7 +112,7 @@ CREATE TABLE `classes_taken` (
   CONSTRAINT `classes_taken_classes_id_fk` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`),
   CONSTRAINT `classes_taken_enrollment_id_fk` FOREIGN KEY (`enrollment_id`) REFERENCES `enrollment` (`id`),
   CONSTRAINT `classes_taken_professors_id_fk` FOREIGN KEY (`professor_id`) REFERENCES `professors` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 LOCK TABLES `classes_taken` WRITE;
 /*!40000 ALTER TABLE `classes_taken` DISABLE KEYS */;
@@ -173,11 +175,11 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `enrollment`;
 
 CREATE TABLE `enrollment` (
-  `id` varchar(36) NOT NULL DEFAULT '',
-  `degree` varchar(100) NOT NULL DEFAULT '',
-  `alias` varchar(10) NOT NULL DEFAULT '',
-  `university_id` varchar(36) NOT NULL DEFAULT '',
-  `level` varchar(100) NOT NULL DEFAULT '',
+  `id` varchar(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `degree` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `alias` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `university_id` varchar(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `level` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `start` date NOT NULL,
   `end` date DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -185,7 +187,7 @@ CREATE TABLE `enrollment` (
   PRIMARY KEY (`id`,`degree`),
   KEY `enrollment_universities_id_fk` (`university_id`),
   CONSTRAINT `enrollment_universities_id_fk` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 LOCK TABLES `enrollment` WRITE;
 /*!40000 ALTER TABLE `enrollment` DISABLE KEYS */;
@@ -217,19 +219,19 @@ DELIMITER ;
 DROP TABLE IF EXISTS `professors`;
 
 CREATE TABLE `professors` (
-  `id` varchar(36) NOT NULL DEFAULT '',
-  `name` varchar(100) NOT NULL DEFAULT '',
-  `department` varchar(100) NOT NULL,
-  `university_id` varchar(36) NOT NULL DEFAULT '',
-  `phone` varchar(20) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `office` varchar(100) NOT NULL,
+  `id` varchar(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `department` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `university_id` varchar(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `phone` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `office` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `professors_universities_id_fk` (`university_id`),
   CONSTRAINT `professors_universities_id_fk` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 LOCK TABLES `professors` WRITE;
 /*!40000 ALTER TABLE `professors` DISABLE KEYS */;
@@ -286,18 +288,18 @@ DELIMITER ;
 DROP TABLE IF EXISTS `universities`;
 
 CREATE TABLE `universities` (
-  `id` varchar(36) NOT NULL DEFAULT '',
-  `name` varchar(100) NOT NULL DEFAULT ' ',
-  `alias` varchar(10) NOT NULL DEFAULT '',
-  `address` varchar(100) NOT NULL DEFAULT '',
-  `city` varchar(100) NOT NULL DEFAULT '',
-  `state` varchar(100) NOT NULL DEFAULT '',
-  `zipcode` varchar(5) NOT NULL DEFAULT '',
-  `country` varchar(100) NOT NULL DEFAULT '',
+  `id` varchar(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT ' ',
+  `alias` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `address` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `city` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `state` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `zipcode` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `country` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 LOCK TABLES `universities` WRITE;
 /*!40000 ALTER TABLE `universities` DISABLE KEYS */;
